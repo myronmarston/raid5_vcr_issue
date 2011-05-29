@@ -4,8 +4,8 @@ module AgileZen
       # Builds and returns the Faraday::Connection based on set options.
       def connection
         @connection ||= Faraday::Connection.new(:url => connection_url, :headers => connection_headers) do |builder|
-          builder.use Faraday::Response::ParseJson
           builder.use Faraday::Response::Mashify
+          builder.use Faraday::Response::ParseJson
           builder.adapter Faraday.default_adapter
         end
       end
